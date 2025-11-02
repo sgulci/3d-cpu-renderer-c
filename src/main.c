@@ -130,12 +130,25 @@ void draw_grid(void){
   }
 }
 
+void draw_rectangle(int x, int y, int width, int height, uint32_t color){
+
+ for (int i = y; i < y+height; i++){
+    for (int  j = x; j < x+width; j++){
+
+      color_buffer[(window_width * i) + j] = color;
+    }
+  } 
+
+
+}
+
 void render(void){
   SDL_SetRenderDrawColor(renderer,255,0,0,255);
   SDL_RenderClear(renderer);
 
 
-  draw_grid();
+  // draw_grid();
+  draw_rectangle(200,200,100,50,0x00000000);
 
   render_color_buffer();
   clear_color_buffer(0xFFFFFF00);
