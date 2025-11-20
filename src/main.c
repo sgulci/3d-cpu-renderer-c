@@ -6,6 +6,7 @@
 #define N_POINTS (9*9*9) //cube 
 
 bool is_running = false;
+int previous_frame_time = 0;
 
 // const int N_POINTS = 9*9*9; // cube 
 vec3_t cube_points[N_POINTS];
@@ -77,6 +78,11 @@ vec2_t project (vec3_t point){
 
 
 void update(void){
+
+  while(!SDL_TICKS_PASSED(SDL_GetTicks(), previous_frame_time + FRAME_TARGET_TIME));
+
+
+  previous_frame_time = SDL_GetTicks();
 
   cube_rotation.y += 0.01;
   cube_rotation.x += 0.01;
